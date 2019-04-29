@@ -1,0 +1,50 @@
+Tema1<Protocoale de Comunicatie>
+
+Nanu Andrei
+323CA
+
+Data inceperii: 30 martie 2019
+Data finalizarii: 7 aprilie 2019
+
+Timp acordat: ~30h
+
+!!! Am inclus flagul Werror in Makefile si compileaza cu succes
+
+!!! La testul 4 de la normal tests se intampla in 70% din cazuri sa treaca,
+in 30% sa nu treaca, depinde de numarul de timeout-uri pe care le ia sender-ul.
+In general, cand nu trece testul, timpul este destul de apropiat de timpul maxim
+impus de checker, ramane la latitudinea voastra sa decideti daca merit punctajul
+pe acel test sau nu.
+
+Sender:
+	- implementeaza protocolul sliding window selective repeat
+
+	- creeaza dintr-un fisier un buffer de mesaje pe care le va trimite,
+	la care adauga un numar de cadru si face un xor pe toti octetii din
+	payload-ul fiecarui mesaj, si se pune rezultatul pe ultimul octet din
+	payload pentru ca receiverul sa poata verifica daca mesajul este corupt
+
+	- creeaza un vector de int-uri pentru a mentine mesajele pentru care
+	s-a primit ack
+	
+	- asteapta raspuns
+
+	- daca primeste ack, incearca sa avanseze fereastra
+
+	- daca primeste nak, retrimite acel mesaj
+
+	- daca primeste timeout, retrimite toate mesajele din fereastra pe care
+	nu s-a primit ack
+	
+	- mult mai multe detalii in comentariile pe cod
+
+Reveiver:
+	- implementeaza protocolul sliding window selective repeat
+
+	- aloca memorie pentru un buffer de mesaje in care va copia mesajele primite
+
+	- asteapta mesaje si trimite ack/nak in functie de mesajul la care se astepta
+
+	- la sfarsit scrie toate mesajele din buffer in fisierul creat
+
+	- mult mai multe detalii in comentariile pe cod
